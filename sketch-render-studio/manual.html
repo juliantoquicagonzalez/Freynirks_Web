@@ -320,12 +320,10 @@
     <h2 id="batch-compositing">Batch Render &amp; Compositing</h2>
 
     <h3 id="batch">Multi-camera batch render</h3>
-    <figure class="media media--video" data-media="batch">
-      <div class="media-slot">
-        <span class="media-slot__icon">▷</span>
-        <span class="media-slot__label">Video or image · Batch Render</span>
-        <span class="media-slot__note">Example of the 4 variants generated from the same camera.</span>
-      </div>
+    <figure class="media" data-media="batch">
+      <video class="media-slot__img" autoplay muted loop playsinline preload="metadata">
+        <source src="assets/video/batch.mp4" type="video/mp4">
+      </video>
     </figure>
     <p>Automatically renders the 4 material presets (Black and White, Clay, Sketch Style, Blueprint — Line Art Only is excluded since it has no material of its own) for every camera in the scene, with no manual selection. Names files as <code>{name}_{camera}_{suffix}.png</code>. Requires the output folder to already exist and at least one camera in the scene.</p>
 
