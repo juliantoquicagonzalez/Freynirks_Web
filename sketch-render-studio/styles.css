@@ -464,7 +464,7 @@ code{
   background: var(--bg-2);
 }
 .chapter__media--framed .media-fill{
-  width:auto; height:auto;
+  width:100%; height:auto;
   max-width: 880px; max-height: 62vh;
   object-fit: contain;
   border-radius: 12px;
