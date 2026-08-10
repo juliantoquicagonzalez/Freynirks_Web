@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sketch Render Studio — Manual</title>
+<meta name="description" content="Reference documentation for Sketch Render Studio v1.5.0: installation, interface, all five presets, custom presets, batch render, compositing, and troubleshooting.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23100f0d'/%3E%3Cpath d='M6 24 24 6M11 24 24 11M6 19 19 6' stroke='%23f3efe6' stroke-width='1.4' fill='none'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="manual.css?v=20260807">
+</head>
+<body>
+
+<a class="skip-link" href="#introduction">Skip to content</a>
+
+<header class="topbar">
+  <div class="topbar__brand-group">
+    <a class="topbar__brand-hub" href="../index.html">Freynirks</a>
+    <span class="topbar__brand-sep">/</span>
+    <a class="topbar__brand" href="index.html">Sketch Render Studio</a>
+  </div>
+  <p class="topbar__meta">v1.5.0 · Blender 4.3 – 5.2+</p>
+  <div class="topbar__actions">
+    <button class="icon-btn" type="button" data-theme-toggle aria-label="Toggle light/dark theme">
+      <span data-theme-icon>☾</span>
+    </button>
+    <button class="icon-btn topbar__hamburger" type="button" data-sidebar-toggle aria-label="Open contents" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<div class="docs">
+
+  <div class="sidebar-scrim" data-sidebar-scrim></div>
+
+  <aside class="sidebar" data-sidebar>
+    <div class="sidebar__head">
+      <p class="sidebar__eyebrow">Contents</p>
+      <div class="sidebar__expand-btns">
+        <button type="button" data-expand-all title="Expand all">+</button>
+        <button type="button" data-collapse-all title="Collapse all">−</button>
+      </div>
+    </div>
+
+    <nav class="nav-tree" aria-label="Table of contents">
+      <ul>
+        <li><a href="#introduction" class="nav-tree__link">Introduction</a></li>
+        <li><a href="#requirements" class="nav-tree__link">Requirements</a></li>
+        <li><a href="#installation" class="nav-tree__link">Installation</a></li>
+        <li><a href="#video" class="nav-tree__link">Video tutorial</a></li>
+
+        <li class="nav-tree__parent">
+          <div class="nav-tree__toggle" data-toggle role="button" tabindex="0">
+            <span class="nav-tree__arrow">▸</span><span>User interface</span>
+          </div>
+          <ul class="nav-tree__children">
+            <li><a href="#panel" class="nav-tree__link">Accessing the panel</a></li>
+            <li><a href="#panel-layout" class="nav-tree__link">Panel layout</a></li>
+            <li><a href="#controls" class="nav-tree__link">Numbered control reference</a></li>
+          </ul>
+        </li>
+
+        <li><a href="#important-notes" class="nav-tree__link">Important notes</a></li>
+
+        <li class="nav-tree__parent">
+          <div class="nav-tree__toggle" data-toggle role="button" tabindex="0">
+            <span class="nav-tree__arrow">▸</span><span>Using Sketch Render Studio</span>
+          </div>
+          <ul class="nav-tree__children">
+            <li><a href="#heavy-scenes" class="nav-tree__link">Heavy scenes (Line Art Scope)</a></li>
+            <li><a href="#line-thickness" class="nav-tree__link">Adjusting line thickness</a></li>
+            <li><a href="#force-lines" class="nav-tree__link">Forcing lines to show/hide</a></li>
+            <li><a href="#line-texture" class="nav-tree__link">Irregular lines (Line Texture)</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-tree__parent is-open">
+          <div class="nav-tree__toggle" data-toggle role="button" tabindex="0">
+            <span class="nav-tree__arrow">▸</span><span>Presets</span>
+          </div>
+          <ul class="nav-tree__children is-open">
+            <li><a href="#preset-bw" class="nav-tree__link">Black &amp; White</a></li>
+            <li><a href="#preset-clay" class="nav-tree__link">Clay</a></li>
+            <li><a href="#preset-sketch" class="nav-tree__link">Sketch Style</a></li>
+            <li><a href="#preset-blueprint" class="nav-tree__link">Blueprint</a></li>
+            <li><a href="#preset-lineart" class="nav-tree__link">Line Art Only</a></li>
+          </ul>
+        </li>
+
+        <li><a href="#custom-presets" class="nav-tree__link">Custom presets</a></li>
+
+        <li class="nav-tree__parent">
+          <div class="nav-tree__toggle" data-toggle role="button" tabindex="0">
+            <span class="nav-tree__arrow">▸</span><span>Batch Render &amp; Compositing</span>
+          </div>
+          <ul class="nav-tree__children">
+            <li><a href="#batch" class="nav-tree__link">Multi-camera batch render</a></li>
+            <li><a href="#split-passes" class="nav-tree__link">Render Split Passes</a></li>
+            <li><a href="#setup-compositor" class="nav-tree__link">Setup Compositor Output</a></li>
+          </ul>
+        </li>
+
+        <li><a href="#troubleshooting" class="nav-tree__link">Troubleshooting</a></li>
+        <li><a href="#support" class="nav-tree__link">Support</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <main class="content">
+
+    <h1 id="introduction">Sketch Render Studio</h1>
+    <p class="lede">Sketch Render Studio is a Blender addon that automates the native Line Art (Grease Pencil) system to turn any 3D scene into a stylized sketch, blueprint, clay, or lines-only render — no manual material, modifier, or compositing setup. Works in both EEVEE and Cycles.</p>
+
+    <div class="note">
+      <b>Important:</b> Blender's Line Art system only calculates correctly in <b>camera view</b>. If you don't see lines in the render, first check that you're viewing through the scene camera.
+    </div>
+
+    <figure class="media" data-media="cover">
+      <img class="media-slot__img" src="assets/img/hero.webp" alt="Blender scene rendered with the Sketch Style preset" loading="lazy">
+    </figure>
+
+    <h3>Key features</h3>
+    <ul class="feature-list">
+      <li><b>5 built-in presets:</b> Black and White, Clay, Sketch Style, Blueprint, and Line Art Only.</li>
+      <li><b>Custom presets:</b> save your own looks with an automatic thumbnail, in an external file that survives addon updates.</li>
+      <li><b>Export/Import</b> a single preset as a portable file (<code>.sketchpreset</code>) to share with someone else or between your own machines.</li>
+      <li><b>Line texture library</b> (6 styles) with adjustable stretch and pixel size — gives the irregular, hand-drawn line effect.</li>
+      <li><b>Quick Compare (A/B):</b> instantly toggle between the original scene and the preset result.</li>
+      <li><b>Parametric sun</b> for Sketch Style: strength and X/Y/Z rotation sliders, instead of rotating the object by hand.</li>
+      <li><b>Force Show / Clear</b> for specific lines via Freestyle marks, with dedicated buttons — no need to go through the Edge menu manually.</li>
+      <li><b>Multi-camera batch render:</b> renders every camera in the scene across all 4 material presets, in one click.</li>
+      <li><b>Render Split Passes:</b> generates 2 PNGs (lines and beauty rendered separately) without touching the compositor.</li>
+      <li><b>Line Art Scope:</b> isolates the Line Art calculation to just the selected objects while you tune parameters on heavy scenes, and restores it to the full scene with one click.</li>
+      <li><b>One universal package:</b> compatible with Blender 4.3 through 5.2+, no need to download different versions per Blender release.</li>
+    </ul>
+
+    <h3>Blender compatibility</h3>
+    <p>Compatible with Blender 4.3 and later (tested on 4.3, 4.5 LTS, and 5.2 LTS). Works on Windows, macOS, and Linux.</p>
+
+    <h2 id="requirements">System requirements</h2>
+    <table class="table">
+      <tr><th>Blender</th><td>4.3 or later — universal package, tested up to 5.2 LTS</td></tr>
+      <tr><th>Operating systems</th><td>Windows, macOS, Linux</td></tr>
+      <tr><th>Render engine</th><td>EEVEE or Cycles</td></tr>
+    </table>
+
+    <h2 id="installation">Installation</h2>
+    <ol class="step-list">
+      <li>Download the Sketch Render Studio <code>.zip</code> from Superhive.</li>
+      <li>In Blender: <code>Edit &gt; Preferences &gt; Add-ons</code>.</li>
+      <li>Click the top-right dropdown menu &gt; <code>Install from Disk…</code></li>
+      <li>Select the <code>.zip</code> and confirm.</li>
+      <li>Verify it's enabled by finding “Sketch Render Studio” in the list.</li>
+    </ol>
+    <div class="warn"><b>Important:</b> the addon's folder/file name shouldn't contain periods (for example “5.2”) — Blender can truncate the module name on install, causing a “No module named…” error. Use underscores if you need to version the name.</div>
+
+    <h3>Verifying the installation</h3>
+    <p>The panel appears in the 3D Viewport's Tool Shelf (<code>N</code> key), in the tab with the addon's icon, under the name “Sketch Render Studio”.</p>
+
+    <h2 id="video">Video tutorial</h2>
+    <figure class="media media--video" data-media="video-tutorial">
+      <div class="media-slot">
+        <span class="media-slot__icon">▷</span>
+        <span class="media-slot__label">Video · Full tutorial</span>
+        <span class="media-slot__note">Still to be recorded and uploaded to YouTube/Vimeo. Replace with the embed or a local &lt;video&gt;.</span>
+      </div>
+    </figure>
+
+    <h2 id="interface">User interface</h2>
+    <h3 id="panel">Accessing the panel</h3>
+    <p>The Sketch Render Studio panel is located in the 3D Viewport, inside the Tool Shelf (<code>N</code> key), in the tab with the addon's icon.</p>
+
+    <figure class="media" data-media="interface">
+      <img class="media-slot__img" src="assets/img/interfaz.webp" alt="Sketch Render Studio panel open in the 3D Viewport's Tool Shelf" loading="lazy">
+    </figure>
+
+    <h3 id="panel-layout">Panel layout</h3>
+    <ul class="feature-list">
+      <li><b>Preset:</b> visual selector (thumbnail grid) + dropdown for the 5 presets.</li>
+      <li><b>Custom Presets:</b> save/load/export/import/delete your own presets.</li>
+      <li><b>Line Art:</b> contour/detail thickness, crease angle, line color and texture, Force Show/Clear.</li>
+      <li><b>Colors:</b> shading and background color (varies by active preset).</li>
+      <li><b>Lighting:</b> parametric sun (strength + X/Y/Z rotation), only visible when the preset uses it.</li>
+      <li><b>Render Config:</b> render engine, transparent background, background strength, output path, render and batch render buttons.</li>
+      <li><b>Performance:</b> Viewport Simplify and Line Art Scope (Preview Selected / Full Scene).</li>
+      <li><b>Compositing:</b> Render Split Passes and Setup Compositor Output.</li>
+    </ul>
+
+    <h3 id="controls">Numbered control reference</h3>
+    <p>Each number corresponds to a control in the panel:</p>
+    <table class="table">
+      <tr><th>#</th><th>Control</th><th>Description</th></tr>
+      <tr><td>1</td><td><b>Preset</b></td><td>Visual selector and dropdown for the active style.</td></tr>
+      <tr><td>2</td><td><b>Update / Reset to Original</b></td><td>Applies the current preset or reverts the scene.</td></tr>
+      <tr><td>3</td><td><b>Quick Compare A/B</b></td><td>Instantly toggles between the original scene and the result.</td></tr>
+      <tr><td>4</td><td><b>Custom Presets</b></td><td>Save / load / export / import / delete your own presets.</td></tr>
+      <tr><td>5</td><td><b>Contour / Detail Thickness</b></td><td>Thickness of the silhouette and interior detail lines.</td></tr>
+      <tr><td>6</td><td><b>Crease Angle</b></td><td>Angle above which an edge shows its line.</td></tr>
+      <tr><td>7</td><td><b>Line Color / Line Texture</b></td><td>Line color and line texture (6 styles, with adjustable stretch).</td></tr>
+      <tr><td>8</td><td><b>Force Show / Clear</b></td><td>Forces a specific edge to show (Freestyle mark) or clears it.</td></tr>
+      <tr><td>9</td><td><b>Toggle Object Override</b></td><td>Includes/excludes the selected object from Line Art.</td></tr>
+      <tr><td>10</td><td><b>Sun Strength / Rotation X-Y-Z</b></td><td>Parametric sun control (Sketch Style only).</td></tr>
+      <tr><td>11</td><td><b>Render Engine / Sync From Scene</b></td><td>Switches the render engine or syncs it with the scene.</td></tr>
+      <tr><td>12</td><td><b>Batch Render All Presets</b></td><td>Renders every camera × all 4 material presets, in one click.</td></tr>
+      <tr><td>13</td><td><b>Viewport Simplify</b></td><td>Reduces subdivision in the viewport (doesn't affect the final render).</td></tr>
+      <tr><td>14</td><td><b>Line Art Scope</b></td><td>Isolates the Line Art calculation to the current selection, or restores it to the full scene.</td></tr>
+      <tr><td>15</td><td><b>Render Split Passes / Setup Compositor</b></td><td>Generates separate line/beauty renders, or builds the basic compositor.</td></tr>
+    </table>
+
+    <h2 id="important-notes">Important notes</h2>
+    <div class="note">
+      <ul style="margin-bottom:0;">
+        <li>Avoid editing the scene manually (renaming, duplicating, editing materials) while a preset is active — the addon stores the original materials so it can revert, and an external edit can cause <b>Reset to Original</b> to not restore correctly.</li>
+        <li>Custom presets are saved as external files (not inside the addon), so they survive updates and reinstalls.</li>
+        <li>The addon's folder/zip name shouldn't contain periods, to avoid the installation error described above.</li>
+      </ul>
+    </div>
+
+    <h2 id="usage">Using Sketch Render Studio</h2>
+
+    <h3 id="heavy-scenes">Heavy scenes — Line Art Scope</h3>
+    <p>In scenes with lots of objects, the Line Art calculation can get slow every time you adjust a slider. The <b>Preview Selected Objects</b> button limits the calculation to just the selected objects (using <code>source_type='COLLECTION'</code> on the Line Art modifier), and <b>Full Scene</b> restores it for the final render.</p>
+    <figure class="media" data-media="line-art-scope">
+      <img class="media-slot__img" src="assets/img/line-art-scope.webp" alt="Line Art Scope — isolated scene vs. full scene" loading="lazy">
+    </figure>
+
+    <h3 id="line-thickness">Adjusting line thickness</h3>
+    <p>The <b>Contour Thickness</b> and <b>Detail Thickness</b> sliders control the thickness of the silhouette and interior detail lines, respectively. Adjust until the line work looks right.</p>
+
+    <h3 id="force-lines">How to force lines to show or hide</h3>
+    <p>In Edit Mode, select the edge you want to force and use the <b>Force Show</b> button in the panel — it marks that edge as Freestyle so its line always shows, regardless of the global Crease Angle. <b>Clear</b> removes the mark. A Crease Angle of 0° hides every line except forced ones; 180° shows all of them.</p>
+
+    <h3 id="line-texture">Irregular lines (hand-drawn effect)</h3>
+    <p>Instead of requiring manual Subdivide + Noise modifiers, Sketch Render Studio handles this natively with the <b>Line Texture library</b>: 6 line styles with real irregular edges (ink/pencil grain), applied with one click from the panel, with adjustable Texture Stretch to control the repetition along the line.</p>
+
+    <h2 id="presets">Presets</h2>
+    <p>Each preset automatically configures materials, world (background/ambient), and Line Art settings to achieve a specific look. Jump straight to any of them:</p>
+    <div class="chip-row">
+      <a class="chip" href="#preset-bw">Black &amp; White</a>
+      <a class="chip" href="#preset-clay">Clay</a>
+      <a class="chip" href="#preset-sketch">Sketch Style</a>
+      <a class="chip" href="#preset-blueprint">Blueprint</a>
+      <a class="chip" href="#preset-lineart">Line Art Only</a>
+    </div>
+
+    <h3 id="preset-bw">Black and White</h3>
+    <figure class="media" data-media="preset-bw">
+      <img class="media-slot__img" src="assets/img/preset-bw.webp" alt="Render with the Black and White preset" loading="lazy">
+    </figure>
+    <p>Pure black-and-white drawing. Line and background color are freely adjustable.</p>
+
+    <h3 id="preset-clay">Clay</h3>
+    <figure class="media" data-media="preset-clay">
+      <img class="media-slot__img" src="assets/img/preset-clay.webp" alt="Render with the Clay preset" loading="lazy">
+    </figure>
+    <p>A clay-like material with ambient occlusion (adjustable AO Intensity and AO Distance). Ideal for reviewing form and volume without the distraction of color.</p>
+
+    <h3 id="preset-sketch">Sketch Style</h3>
+    <figure class="media" data-media="preset-sketch">
+      <img class="media-slot__img" src="assets/img/preset-sketch.webp" alt="Render with the Sketch Style preset" loading="lazy">
+    </figure>
+    <p>A hand-drawn sketch look with directional shading, controlled by a parametric sun (strength + X/Y/Z rotation) that the addon adds automatically.</p>
+
+    <h3 id="preset-blueprint">Blueprint</h3>
+    <figure class="media" data-media="preset-blueprint">
+      <img class="media-slot__img" src="assets/img/preset-blueprint.webp" alt="Render with the Blueprint preset" loading="lazy">
+    </figure>
+    <p>Simulates a classic technical blueprint: light lines on a blue background. A single color property controls both the background and the object at once, so there's no risk of them falling out of sync when you adjust the color by hand.</p>
+
+    <h3 id="preset-lineart">Line Art Only</h3>
+    <figure class="media" data-media="preset-lineart">
+      <img class="media-slot__img" src="assets/img/preset-lineart.webp" alt="Render with the Line Art Only preset" loading="lazy">
+    </figure>
+    <p>Just the lines, on a transparent background — ideal for compositing over another render or texture. Export as PNG with an alpha channel.</p>
+
+    <h2 id="custom-presets">Custom presets</h2>
+    <p>Beyond the 5 built-in presets, you can save your own combinations of material, line, and color as a reusable preset, available in any Blender file you open.</p>
+    <figure class="media" data-media="custom-presets">
+      <img class="media-slot__img" src="assets/img/custom-presets.webp" alt="Saving a custom preset with its thumbnail" loading="lazy">
+    </figure>
+
+    <h3>What a custom preset stores</h3>
+    <ul class="feature-list">
+      <li>Contour and detail thickness, crease angle.</li>
+      <li>Line color, shading color, background color.</li>
+      <li>Ambient Occlusion settings (use, intensity, distance).</li>
+      <li>Background strength, and whether it uses a transparent background.</li>
+      <li>Whether it uses flat shading.</li>
+    </ul>
+
+    <h3>Where they're stored</h3>
+    <p>They're saved as individual <code>.json</code> files in <code>Documents/Sketch Render Studio/Presets/</code> — outside the addon folder, so they survive updates and reinstalls. You can point this folder at Dropbox/OneDrive to sync between computers. If you had presets saved with an earlier system (inside the addon's preferences), they're automatically migrated to external files the first time you open the panel.</p>
+
+    <h3>Creating a preset — step by step</h3>
+    <ol class="step-list">
+      <li>Apply a base preset close to the look you want (for example, Black and White).</li>
+      <li>Adjust line color, thickness, texture, and other panel controls until you get the look you want.</li>
+      <li>Click <b>Save Current as Preset</b>.</li>
+      <li>Type a name in the dialog and confirm.</li>
+      <li>The preset saves with an automatically generated thumbnail (a screenshot of the viewport at that moment), and shows up in the list alongside the built-in presets.</li>
+    </ol>
+
+    <h3>Using a saved preset</h3>
+    <p>Click its name in the Custom Presets list — it applies just like a built-in preset.</p>
+
+    <h3>Managing presets (export / import)</h3>
+    <ul class="feature-list">
+      <li><b>Export:</b> an export button next to each preset — packages the JSON + thumbnail into a single portable <code>.sketchpreset</code> file.</li>
+      <li><b>Import:</b> a general “Import” button — rebuilds the preset (with its thumbnail) locally from that shared file.</li>
+      <li><b>Delete:</b> an X icon next to each preset.</li>
+      <li><b>Open Folder:</b> opens the presets folder in the system's file explorer.</li>
+    </ul>
+
+    <h3>Thumbnails</h3>
+    <p>Every custom preset automatically gets a real thumbnail (a screenshot of the viewport at the moment you save), visible in the panel's list — not a generic icon.</p>
+
+    <h2 id="batch-compositing">Batch Render &amp; Compositing</h2>
+
+    <h3 id="batch">Multi-camera batch render</h3>
+    <figure class="media media--video" data-media="batch">
+      <div class="media-slot">
+        <span class="media-slot__icon">▷</span>
+        <span class="media-slot__label">Video or image · Batch Render</span>
+        <span class="media-slot__note">Example of the 4 variants generated from the same camera.</span>
+      </div>
+    </figure>
+    <p>Automatically renders the 4 material presets (Black and White, Clay, Sketch Style, Blueprint — Line Art Only is excluded since it has no material of its own) for every camera in the scene, with no manual selection. Names files as <code>{name}_{camera}_{suffix}.png</code>. Requires the output folder to already exist and at least one camera in the scene.</p>
+
+    <h3 id="split-passes">Render Split Passes</h3>
+    <p>Generates 2 direct PNG renders: one with a Holdout material (just the silhouette/lines with transparency) and one with the original materials (with the Grease Pencil hidden) — without you needing to touch the compositor for this specific function.</p>
+
+    <h3 id="setup-compositor">Setup Compositor Output</h3>
+    <p>Builds a basic compositor node tree (Render Layers → File Output) for general output control.</p>
+
+    <h2 id="troubleshooting">Troubleshooting</h2>
+
+    <h3>The addon doesn't show up in the panel</h3>
+    <p>Confirm it's enabled under <code>Edit &gt; Preferences &gt; Add-ons</code> by searching for “Sketch Render Studio”.</p>
+
+    <h3>“No module named…” error on install</h3>
+    <p>The file/folder name contains a period, which truncates the module name. Rename it without periods and reinstall.</p>
+
+    <h3>Lines don't show up in the render</h3>
+    <p>Make sure you're in camera view — Blender's Line Art system only calculates correctly from that view.</p>
+
+    <h2 id="support">Support</h2>
+    <p>For questions, bug reports, or suggestions, reach out through Superhive or our support channel.</p>
+    <div class="cta-row">
+      <a class="btn" href="#" data-external-placeholder>Superhive Store ↗</a>
+      <a class="btn btn--ghost" href="#" data-external-placeholder>Support channel ↗</a>
+    </div>
+
+    <h3>Credits</h3>
+    <p>Author: Toquica</p>
+
+    <footer class="content-footer">
+      <p>SKETCH RENDER STUDIO — © 2026 Toquica</p>
+      <p><a href="index.html">← Back to overview</a></p>
+    </footer>
+
+  </main>
+</div>
+
+<script defer src="manual.js?v=20260807"></script>
+</body>
+</html>

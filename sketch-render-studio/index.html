@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sketch Render Studio — Blender Add-on</title>
+<meta name="description" content="Sketch Render Studio automates Blender's native Line Art system to turn any scene into a sketch, blueprint, clay, or line art render — no manual material setup.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23100f0d'/%3E%3Cpath d='M6 24 24 6M11 24 24 11M6 19 19 6' stroke='%23f3efe6' stroke-width='1.4' fill='none'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="preload" as="image" href="assets/img/hero.webp" fetchpriority="high">
+<link rel="stylesheet" href="styles.css?v=20260807">
+<noscript><style>[data-reveal], .chapter{ opacity:1 !important; transform:none !important; } .chapter__media .media-slot, .hero__media .media-slot{ transform:none !important; }</style></noscript>
+</head>
+<body>
+
+<a class="skip-link" href="#overview">Skip to content</a>
+
+<div class="progress-bar" aria-hidden="true"><span data-progress-fill></span></div>
+
+<header class="nav">
+  <div class="nav__brand-group">
+    <a class="nav__brand-hub" href="../index.html">Freynirks</a>
+    <span class="nav__brand-sep">/</span>
+    <span class="nav__brand-current">Sketch Render Studio</span>
+  </div>
+  <nav class="nav__links">
+    <a href="manual.html">Manual</a>
+  </nav>
+</header>
+
+<button class="back-to-top" type="button" data-back-to-top aria-label="Back to top">↑</button>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero" id="hero">
+  <div class="hero__media">
+    <img class="media-fill" src="assets/img/hero.webp" alt="Blender scene rendered with the Sketch Style preset" fetchpriority="high">
+  </div>
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero__scrim" aria-hidden="true"></div>
+  <div class="hero__content">
+    <p class="badge-pill">✦ Sketch Render Studio</p>
+    <h1 class="hero__title">Turn your Blender scene into a sketch, blueprint, or clay render — without touching a single material.</h1>
+    <p class="hero__sub">The complete guide: installation, all five presets, and the full workflow, step by step.</p>
+  </div>
+  <p class="hero__cue" aria-hidden="true">Scroll<span>↓</span></p>
+</section>
+
+<!-- ============================================================
+     OVERVIEW
+     ============================================================ -->
+<section class="text-block" id="overview">
+  <div class="text-block__inner" data-reveal>
+    <p class="eyebrow">Overview</p>
+    <h2 class="text-block__title">Blender's Line Art system, taken to the extreme.</h2>
+    <p class="text-block__lede">Sketch Render Studio automates Blender's native Line Art (Grease Pencil) system to turn any scene into a sketch, blueprint, clay, or line art render — no manual material, modifier, or compositing setup. Pick a preset, hit render, done.</p>
+
+    <ol class="chapter-list">
+      <li><span class="chapter-list__num">01</span><span class="chapter-list__text">Installation — from zero to your first render in five minutes.</span></li>
+      <li><span class="chapter-list__num">02</span><span class="chapter-list__text">The five presets — a different style for every purpose.</span></li>
+      <li><span class="chapter-list__num">03</span><span class="chapter-list__text">Custom presets — save your own look.</span></li>
+      <li><span class="chapter-list__num">04</span><span class="chapter-list__text">Batch render and compositing — produce a full set without repeating the process.</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============================================================
+     REQUIREMENTS (stat strip)
+     ============================================================ -->
+<section class="stat-strip" id="requirements">
+  <div class="stat-strip__inner" data-reveal>
+    <div class="stat">
+      <p class="stat__value">4.3 — 5.2+</p>
+      <p class="stat__label">One universal package, no separate versions</p>
+    </div>
+    <div class="stat">
+      <p class="stat__value">3</p>
+      <p class="stat__label">Operating systems — Windows, macOS, Linux</p>
+    </div>
+    <div class="stat">
+      <p class="stat__value">EEVEE / Cycles</p>
+      <p class="stat__label">Supported render engines</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     INSTALLATION
+     ============================================================ -->
+<section class="chapter" id="installation">
+  <div class="chapter__text" data-reveal>
+    <p class="eyebrow">01 · Installation</p>
+    <h2 class="chapter__title">Five clicks and you're in.</h2>
+    <ol class="step-list">
+      <li>Download the Sketch Render Studio <code>.zip</code> from Superhive.</li>
+      <li>Open Blender and go to <code>Edit &gt; Preferences &gt; Add-ons</code>.</li>
+      <li>Open the dropdown menu in the top right and choose <code>Install from Disk…</code></li>
+      <li>Select the downloaded <code>.zip</code> and confirm.</li>
+      <li>Verify it's enabled by finding “Sketch Render Studio” in the list.</li>
+    </ol>
+    <p class="chapter__aside">The addon's file or folder name shouldn't contain periods — Blender can truncate the module name on install. Use hyphens if you need to rename it manually.</p>
+  </div>
+  <div class="chapter__media chapter__media--framed">
+    <img class="media-fill" src="assets/img/instalacion.webp" alt="Edit > Preferences > Add-ons panel with Sketch Render Studio enabled">
+  </div>
+</section>
+
+<!-- ============================================================
+     INTERFACE
+     ============================================================ -->
+<section class="chapter" id="interface">
+  <div class="chapter__text" data-reveal>
+    <p class="eyebrow">Interface</p>
+    <h2 class="chapter__title">Every control, in a single panel.</h2>
+    <p class="chapter__text-p">The Sketch Render Studio panel lives in the 3D Viewport, inside the Tool Shelf (<code>N</code> key). From there you pick the active preset, compare the result against your original scene with one click — Quick Compare A/B — and adjust contour thickness, crease angle, and line texture without leaving the viewport.</p>
+    <p class="chapter__text-p">When the scene gets heavy, Viewport Simplify keeps navigation smooth; and if you switch the render engine manually, Sync From Scene matches the addon's settings in one click.</p>
+  </div>
+  <div class="chapter__media chapter__media--framed">
+    <img class="media-fill" src="assets/img/interfaz.webp" alt="Sketch Render Studio panel open in the 3D Viewport's Tool Shelf">
+  </div>
+</section>
+
+<!-- ============================================================
+     PRESETS — unified grid (one scene, five looks)
+     ============================================================ -->
+<section class="text-block text-block--flush" id="presets">
+  <div class="text-block__inner" data-reveal>
+    <p class="eyebrow">In practice</p>
+    <h2 class="text-block__title">One scene. Five looks. One click each.</h2>
+    <p class="text-block__lede">The same model, run through all 5 built-in presets. Pick one and Sketch Render Studio adjusts materials, world, and Line Art in a single click.</p>
+  </div>
+</section>
+
+<section class="preset-showcase">
+  <div class="preset-showcase__grid" data-reveal-group>
+
+    <figure class="preset-card" id="preset-bw" data-reveal>
+      <div class="preset-card__media">
+        <img class="media-fill" src="assets/img/preset-bw.webp" alt="Render with the Black and White preset" loading="lazy">
+      </div>
+      <figcaption class="preset-card__caption">// black &amp; white — the line, and nothing else</figcaption>
+    </figure>
+
+    <figure class="preset-card" id="preset-clay" data-reveal>
+      <div class="preset-card__media">
+        <img class="media-fill" src="assets/img/preset-clay.webp" alt="Render with the Clay preset" loading="lazy">
+      </div>
+      <figcaption class="preset-card__caption">// clay — volume before color</figcaption>
+    </figure>
+
+    <figure class="preset-card" id="preset-sketch" data-reveal>
+      <div class="preset-card__media">
+        <img class="media-fill" src="assets/img/preset-sketch.webp" alt="Render with the Sketch Style preset" loading="lazy">
+      </div>
+      <figcaption class="preset-card__caption">// sketch style — the hand, before the machine</figcaption>
+    </figure>
+
+    <figure class="preset-card" id="preset-blueprint" data-reveal>
+      <div class="preset-card__media">
+        <img class="media-fill" src="assets/img/preset-blueprint.webp" alt="Render with the Blueprint preset" loading="lazy">
+      </div>
+      <figcaption class="preset-card__caption">// blueprint — any scene, a technical drawing</figcaption>
+    </figure>
+
+    <figure class="preset-card" id="preset-lineart" data-reveal>
+      <div class="preset-card__media">
+        <img class="media-fill" src="assets/img/preset-lineart.webp" alt="Render with the Line Art Only preset" loading="lazy">
+      </div>
+      <figcaption class="preset-card__caption">// line art only — just the lines</figcaption>
+    </figure>
+
+  </div>
+
+  <p class="preset-showcase__more"><a href="manual.html#presets">See the full detail on each preset in the manual →</a></p>
+</section>
+
+<!-- ============================================================
+     CUSTOM PRESETS
+     ============================================================ -->
+<section class="chapter" id="custom-presets">
+  <div class="chapter__text" data-reveal>
+    <p class="eyebrow">Custom presets</p>
+    <h2 class="chapter__title">Save your own style.</h2>
+    <p class="chapter__text-p">Beyond the five built-in presets, any combination of line, color, and texture can be saved as a reusable preset, with its own thumbnail.</p>
+    <ol class="step-list">
+      <li>Dial in whatever look you want using the panel controls.</li>
+      <li>Click <b>Save Current as Preset</b>.</li>
+      <li>Give it a name — it'll show up alongside the built-in presets.</li>
+    </ol>
+  </div>
+  <div class="chapter__media chapter__media--framed">
+    <img class="media-fill" src="assets/img/custom-presets.webp" alt="Saving a custom preset with its thumbnail">
+  </div>
+</section>
+
+<!-- ============================================================
+     BATCH RENDER
+     ============================================================ -->
+<section class="chapter" id="batch">
+  <div class="chapter__text" data-reveal>
+    <p class="eyebrow">Batch Render</p>
+    <h2 class="chapter__title">Every camera. Every style. One pass.</h2>
+    <p class="chapter__text-p">Automatically renders all 4 material presets across every camera in the scene, in a single run — a full set of product or booth views without repeating the process by hand.</p>
+  </div>
+  <div class="chapter__media chapter__media--framed">
+    <video class="media-fill" autoplay muted loop playsinline preload="metadata">
+      <source src="assets/video/batch.mp4" type="video/mp4">
+    </video>
+  </div>
+</section>
+
+<!-- ============================================================
+     COMPOSITING / SPLIT PASSES
+     ============================================================ -->
+<section class="chapter" id="compositing">
+  <div class="chapter__text" data-reveal>
+    <p class="eyebrow">Split Passes &amp; Compositor</p>
+    <h2 class="chapter__title">Split the layers, control each one.</h2>
+    <p class="chapter__text-p">Render Split Passes separates the line art from the base geometry using Holdout materials, and Setup Compositor automatically builds the node tree needed to work each layer separately.</p>
+  </div>
+  <div class="chapter__media chapter__media--framed">
+    <img class="media-fill" src="assets/img/split.webp" alt="Render Split Passes — silhouette and beauty rendered separately">
+  </div>
+</section>
+
+<!-- ============================================================
+     TROUBLESHOOTING
+     ============================================================ -->
+<section class="text-block text-block--tight" id="troubleshooting">
+  <div class="text-block__inner" data-reveal>
+    <p class="eyebrow">Troubleshooting</p>
+    <h2 class="text-block__title">When something doesn't go as expected.</h2>
+
+    <div class="qa">
+      <h3 class="qa__q">The addon doesn't show up in the panel</h3>
+      <p class="qa__a">Confirm it's enabled under <code>Edit &gt; Preferences &gt; Add-ons</code> by searching for “Sketch Render Studio”.</p>
+    </div>
+    <div class="qa">
+      <h3 class="qa__q">“No module named…” error on install</h3>
+      <p class="qa__a">The file or folder name contains a period, which truncates the module name. Rename it without periods and reinstall.</p>
+    </div>
+    <div class="qa">
+      <h3 class="qa__q">Lines don't show up in the render</h3>
+      <p class="qa__a">Make sure you're in camera view — Blender's Line Art system only calculates correctly from there.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SUPPORT / final CTA
+     ============================================================ -->
+<section class="text-block text-block--closing" id="support">
+  <div class="text-block__inner" data-reveal>
+    <p class="eyebrow">Support</p>
+    <h2 class="text-block__title">Questions? Let's talk.</h2>
+    <p class="text-block__lede">To report bugs, get help with installation, or just show us what you built, reach out through Superhive or our support channel.</p>
+    <div class="cta-row">
+      <a class="btn" href="manual.html">See the full manual →</a>
+      <a class="btn btn--ghost" href="#" data-external-placeholder>Superhive Store ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <p class="footer__brand">Sketch Render Studio</p>
+  <p class="footer__meta">v1.5.0 · Blender 4.3 – 5.2+</p>
+  <p class="footer__copy">© 2026 Toquica</p>
+  <p class="footer__copy"><a href="manual.html">Documentation manual →</a></p>
+</footer>
+
+<script defer src="main.js?v=20260807"></script>
+</body>
+</html>
